@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{01809EEC-6DD8-4001-B027-826395762785}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Environments</RootNamespace>
+    <AssemblyName>Environments</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IntermediateOutputPath>..\..\obj\Debug\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Debug\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>..\..\obj\Debug\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Debug\</BaseIntermediateOutputPath>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>..\..\obj\Debug\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Debug\</BaseIntermediateOutputPath>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="dotRLGlueCodec, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\RL-Glue\dotRLGlueCodec.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\ThirdParty\MathNet.Numerics\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContinuousStateContinuousDecision\TripleInvertedPendulum.cs" />
+    <Compile Include="ContinuousStateContinuousDecision\HalfCheetah.cs" />
+    <Compile Include="ContinuousStateContinuousDecision\Octopus.cs" />
+    <Compile Include="ContinuousStateContinuousDecision\RobotWeightlifting.cs" />
+    <Compile Include="ContinuousStateDiscreteDecision\ContinuousLabyrinth.cs" />
+    <Compile Include="ContinuousStateDiscreteDecision\KimurasRobot.cs" />
+    <Compile Include="ContinuousStateDiscreteDecision\Acrobot.cs" />
+    <Compile Include="ContinuousStateDiscreteDecision\MountainCar.cs" />
+    <Compile Include="ContinuousStateDiscreteDecision\Pinball.cs" />
+    <Compile Include="Infrastructure\Pinball\Ball.cs" />
+    <Compile Include="Infrastructure\Pinball\Obstacle.cs" />
+    <Compile Include="Infrastructure\Pinball\Point.cs" />
+    <Compile Include="Infrastructure\Pinball\Target.cs" />
+    <Compile Include="DiscreteStateDiscreteDecision\RLGlue.cs" />
+    <Compile Include="Infrastructure\HalfCheetah\AJoints.cs" />
+    <Compile Include="Infrastructure\HalfCheetah\AVector2D.cs" />
+    <Compile Include="Infrastructure\HalfCheetah\Manipulators.cs" />
+    <Compile Include="Infrastructure\Octopus\ChoiceTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\FoodTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\ITaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\ObjectiveTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\PointTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\SequenceTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\SingleTargetTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\TargetTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\TimeLimitTaskTracker.cs" />
+    <Compile Include="Infrastructure\Octopus\Config.cs" />
+    <Compile Include="Infrastructure\Octopus\Arm.cs" />
+    <Compile Include="Infrastructure\Octopus\AxialFrictionInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\BuoyancyInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\Compartment.cs" />
+    <Compile Include="Infrastructure\Octopus\DominatedNode.cs" />
+    <Compile Include="Infrastructure\Octopus\EnvironmentSimulator.cs" />
+    <Compile Include="Infrastructure\Octopus\Food.cs" />
+    <Compile Include="Infrastructure\Octopus\GravityInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\IInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\LongitudinalMuscleInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\Mouth.cs" />
+    <Compile Include="Infrastructure\Octopus\MuscleInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\Node.cs" />
+    <Compile Include="Infrastructure\Octopus\RepulsionInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\RotationDominantNode.cs" />
+    <Compile Include="Infrastructure\Octopus\SphericalFrictionInfluence.cs" />
+    <Compile Include="Infrastructure\Octopus\Target.cs" />
+    <Compile Include="Infrastructure\Octopus\TransversalMuscleInfluence.cs" />
+    <Compile Include="ContinuousStateDiscreteDecision\CartPoleSwingUp.cs" />
+    <Compile Include="Infrastructure\TypeExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DiscreteStateDiscreteDecision\Grid.cs" />
+    <Compile Include="Environment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackwardCompatibility\BackwardCompatibility.csproj">
+      <Project>{B643FE63-5503-4141-8A75-5B0E316462A6}</Project>
+      <Name>BackwardCompatibility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{D365F378-FE32-4DB5-9C7C-95C1DCC9BAB1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

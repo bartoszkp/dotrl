@@ -1,0 +1,35 @@
+1. How to setup the Private Build?
+2. How to implement an Agent/Environment?
+3. How to contact the authors?
+4. How to reference this work?
+
+1) In Visual Studio 2010 (should be similar in other versions):
+   a) choose "Tools" -> "External tools"
+   b) click "Add"
+   c) fill the fields:
+      Title: "dotRL private build" (or anything you want)
+      Command: C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe
+      Arguments: $(SolutionDir)\Build\BuildScripts\PrivateBuild.proj /p:Configuration=Debug /p:Platform="Any CPU"
+      Initial directory: [leave empty]
+      Use Output window: [checked]
+      Prompt for arguments: [unchecked]
+      Treat output as unicode: [unchecked]
+   d) Press OK
+
+   Then, after project has been built you can (and should) choose "Tools" -> "dotRL private build" (or the other title you have chosen)
+
+2) 
+   a) Choose appropriate folder depending the problem type you are interested in (continuous/discrete state/action)
+   b) Create a class, with Agent/Environment baseclass and template arguments which match the problem type
+      Name the class in a way that will clearly represent it's concept (e.g. don't you abbreviations)
+      
+   A simple examples you can base on are GridEnvironmentFlat and QLearningAgent
+
+3) Send and an e-mail to 'bartoszkp@gmail.com'.
+
+4) Please cite: 
+Papis, B.; Wawrzynski, P., "dotRL: A platform for rapid Reinforcement Learning methods development and validation," Computer Science and Information Systems (FedCSIS), 2013 Federated Conference on , vol., no., pp.129,136, 8-11 Sept. 2013
+keywords: {learning (artificial intelligence);program testing;program verification;.NET framework;benchmark environments;dotRL platform;octopus-arm and half-cheetah;rapid reinforcement learning methods;Decision making;Learning (artificial intelligence);Libraries;Protocols;User interfaces;Vectors;Visualization;Reinforcement learning;evaluation platform;software engineering},
+URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6643987&isnumber=6643962
+
+Reference in BibTex format is provided in the reference.bib file.

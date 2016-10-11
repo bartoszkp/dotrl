@@ -1,0 +1,18 @@
+<Dictionary>
+  <Words>
+    <Recognized>
+    </Recognized>
+    <Unrecognized>
+    </Unrecognized>
+    <Deprecated>
+      <Term PreferredAlternate="limit">limitation</Term>
+      <Term PreferredAlternate="Limit">Limitation</Term>
+      <Term PreferredAlternate="identifier">identificator</Term>
+      <Term PreferredAlternate="Identifier">Identificator</Term>
+    </Deprecated>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>

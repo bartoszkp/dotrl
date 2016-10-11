@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="PrivateBuild">
+
+  <PropertyGroup>
+    <ProjectRootDirPath>$(MSBuildProjectDirectory)\..\..</ProjectRootDirPath>
+    <ProjectToolsDirPath>$(MSBuildProjectDirectory)\..</ProjectToolsDirPath>
+    <FxCopCmdPath>$(MSBuildProjectDirectory)\..\FxCop\FxCopCmd.exe</FxCopCmdPath>
+  </PropertyGroup>
+
+  <Import Project="$(ProjectToolsDirPath)\StyleCop\Microsoft.StyleCop.Targets"/>
+  <Import Project="$(ProjectToolsDirPath)\MSBuildExtensionPack\MSBuild.ExtensionPack.tasks"/>
+  <Import Project="$(ProjectToolsDirPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+  <Import Project=".\Compilation.targets"/>
+  <Import Project=".\StyleCop.targets"/>
+  <Import Project=".\FxCop.targets"/>
+
+  <Target Name="PrivateBuild"     DependsOnTargets="Compilation;StyleCop;FxCop">
+    <Error Text="StyleCop violations: $(TotalStyleCopMessagesCount), FxCop violations: $(TotalFxCopMessagesCount) !" Condition="'$(TotalStyleCopMessagesCount)' != '0' Or '$(TotalFxCopMessagesCount)' != '0'"/>
+  </Target>
+</Project>

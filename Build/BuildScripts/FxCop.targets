@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FxCopRulesPath>$(ProjectRootDirPath)\Build\FxCop\dotRL.FxCop</FxCopRulesPath>
+  </PropertyGroup>
+
+  <Target Name="FxCop" DependsOnTargets="Compilation">
+    <CreateItem Condition="'%(Filename)' != 'BackwardCompatibility'" Include="@(MSBuildCompilationOutput)">
+      <Output TaskParameter="Include" ItemName="FxCopFiles" />
+    </CreateItem>
+
+    <MSBuild.ExtensionPack.CodeQuality.FxCop
+       FxCopPath="$(FxCopCmdPath)"
+       SearchGAC="true"
+       TaskAction="Analyse"
+       Files="@(FxCopFiles)"
+       OutputFile="..\..\..\bin\FxCopResult.xml"
+       ForceOutput="true"
+       Project="$(FxCopRulesPath)">
+      <Output TaskParameter="AnalysisFailed" PropertyName="Result"/>
+    </MSBuild.ExtensionPack.CodeQuality.FxCop>
+
+    <XmlRead  ContinueOnError="True"
+              XmlFileName="..\..\..\bin\FxCopResult.xml"
+              XPath = "string(count(//Issue[@Level='CriticalError']/@Level|//Issue[@Level='Error']/@Level|//Issue[@Level='CriticalWarning']/@Level|//Issue[@Level='Warning']/@Level))">
+      <Output TaskParameter="Value" PropertyName="TotalFxCopMessagesCount" />
+    </XmlRead>
+  </Target>
+</Project>

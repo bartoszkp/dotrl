@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C2C5C725-3DC1-40ED-864C-E94043A083C2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Application</RootNamespace>
+    <AssemblyName>dotRL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>..\..\publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <IntermediateOutputPath>..\..\obj\Debug\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Debug\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>..\..\obj\Debug\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Debug\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>..\..\obj\Debug\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\obj\Debug\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Application.MainClass</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>dotrl.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="dotRLGlueCodec, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\RL-Glue\dotRLGlueCodec.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.NetEnterpriseServers.ExceptionMessageBox">
+      <HintPath>..\ThirdParty\Microsoft\Microsoft.NetEnterpriseServers.ExceptionMessageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgentRegistry.cs" />
+    <Compile Include="BatchExperiment.cs" />
+    <Compile Include="BatchExperimentSetupWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchExperimentSetupWindow.Designer.cs">
+      <DependentUpon>BatchExperimentSetupWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchExperimentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchExperimentWindow.Designer.cs">
+      <DependentUpon>BatchExperimentWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchMode.cs" />
+    <Compile Include="Experiment.cs" />
+    <Compile Include="ExperimentSetupWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExperimentSetupWindow.Designer.cs">
+      <DependentUpon>ExperimentSetupWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExperimentTemplates\BatchExperimentTemplate.cs" />
+    <Compile Include="ExperimentTemplates\ExperimentTemplate.cs" />
+    <Compile Include="ExperimentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExperimentWindow.Designer.cs">
+      <DependentUpon>ExperimentWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExperimentWorker.cs" />
+    <Compile Include="ExperimentWorkerMode.cs" />
+    <Compile Include="Integration\RLGlue\IRLGlueInterface.cs" />
+    <Compile Include="Integration\RLGlue\RLGlueAgentInterface.cs" />
+    <Compile Include="Integration\RLGlue\RLGlueEnvironmentInterface.cs" />
+    <Compile Include="Integration\RLGlue\RLGlueExperiment.cs" />
+    <Compile Include="Integration\RLGlue\RLGlueExperimentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integration\RLGlue\RLGlueExperimentWindow.Designer.cs">
+      <DependentUpon>RLGlueExperimentWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integration\RLGlue\RLGlueExperimentWithAgent.cs" />
+    <Compile Include="Integration\RLGlue\RLGlueExperimentConfigurationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integration\RLGlue\RLGlueExperimentConfigurationWindow.Designer.cs">
+      <DependentUpon>RLGlueExperimentConfigurationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integration\RLGlue\ConversionExtensions.cs" />
+    <Compile Include="Integration\RLGlue\RLGlueExperimentWithEnvironment.cs" />
+    <Compile Include="Parameters\ParameterValueBuffer.cs" />
+    <Compile Include="Parameters\ParameterWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameters\ParameterWindow.Designer.cs">
+      <DependentUpon>ParameterWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ConstantValueDataSource.cs" />
+    <Compile Include="Reporting\DataAccumulators\EpisodeTotalValueDataAccumulator.cs" />
+    <Compile Include="Reporting\DataAccumulators\TotalSinceTriggerDataAccumulator.cs" />
+    <Compile Include="Reporting\DataAccumulators\AverageSinceTriggerDataAccumulator.cs" />
+    <Compile Include="Reporting\DataProvider.cs" />
+    <Compile Include="Reporting\DataAccumulators\AverageValueDataAccumulator.cs" />
+    <Compile Include="Reporting\DataAccumulators\CurrentValueDataAccumulator.cs" />
+    <Compile Include="Reporting\DataAccumulators\EpisodeAverageValueDataAccumulator.cs" />
+    <Compile Include="Reporting\DataAccumulators\TotalValueDataAccumulator.cs" />
+    <Compile Include="Reporting\DataAccumulators\DataAccumulator.cs" />
+    <Compile Include="Reporting\DataSource.cs" />
+    <Compile Include="Reporting\FakeDataProvider.cs" />
+    <Compile Include="Reporting\FakeExperiment.cs" />
+    <Compile Include="Reporting\ReportFileWriter.cs" />
+    <Compile Include="Reporting\ReportingConfigurationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportingConfigurationControl.Designer.cs">
+      <DependentUpon>ReportingConfigurationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalParameters.cs" />
+    <Compile Include="ExperimentBase.cs" />
+    <Compile Include="Parameters\StringParameterValueEditingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parameters\StringParameterValueEditingWindow.Designer.cs">
+      <DependentUpon>StringParameterValueEditingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameters\ParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parameters\ParameterControl.Designer.cs">
+      <DependentUpon>ParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnvironmentRegistry.cs" />
+    <Compile Include="MainClass.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\ReportingConfigurationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportingConfigurationWindow.Designer.cs">
+      <DependentUpon>ReportingConfigurationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportTemplates\ReportFileWriterTemplate.cs" />
+    <Compile Include="Reporting\ReportTemplates\ReportElementTemplate.cs" />
+    <Compile Include="Reporting\ReportTemplates\ReporterTemplate.cs" />
+    <Compile Include="Reporting\ReportTextBoxWriter.cs" />
+    <Compile Include="Reporting\ReportTriggers\EpisodeCountReportTrigger.cs" />
+    <Compile Include="Reporting\ReportWriterConfigurationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportWriterConfigurationControl.Designer.cs">
+      <DependentUpon>ReportWriterConfigurationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportTriggers\EpisodeStepCountReportTrigger.cs" />
+    <Compile Include="Reporting\ReportElement.cs" />
+    <Compile Include="Reporting\Reporter.cs" />
+    <Compile Include="Reporting\ReportTriggers\StepCountReportTrigger.cs" />
+    <Compile Include="Reporting\ReportTriggers\ReportTrigger.cs" />
+    <Compile Include="Reporting\ReportWriter.cs" />
+    <Compile Include="UserInitializationActionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInitializationActionWindow.Designer.cs">
+      <DependentUpon>UserInitializationActionWindow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BatchExperimentSetupWindow.resx">
+      <DependentUpon>BatchExperimentSetupWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BatchExperimentWindow.resx">
+      <DependentUpon>BatchExperimentWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExperimentSetupWindow.resx">
+      <DependentUpon>ExperimentSetupWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integration\RLGlue\RLGlueExperimentWindow.resx">
+      <DependentUpon>RLGlueExperimentWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integration\RLGlue\RLGlueExperimentConfigurationWindow.resx">
+      <DependentUpon>RLGlueExperimentConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameters\ParameterWindow.resx">
+      <DependentUpon>ParameterWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportingConfigurationControl.resx">
+      <DependentUpon>ReportingConfigurationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameters\StringParameterValueEditingWindow.resx">
+      <DependentUpon>StringParameterValueEditingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parameters\ParameterControl.resx">
+      <DependentUpon>ParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExperimentWindow.resx">
+      <DependentUpon>ExperimentWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reporting\ReportingConfigurationWindow.resx">
+      <DependentUpon>ReportingConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportWriterConfigurationControl.resx">
+      <DependentUpon>ReportWriterConfigurationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInitializationActionWindow.resx">
+      <DependentUpon>UserInitializationActionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agents\Agents.csproj">
+      <Project>{787C04A2-0264-49A8-A573-1D03EC6382BA}</Project>
+      <Name>Agents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{D365F378-FE32-4DB5-9C7C-95C1DCC9BAB1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Environments\Environments.csproj">
+      <Project>{01809EEC-6DD8-4001-B027-826395762785}</Project>
+      <Name>Environments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presenters\Presenters.csproj">
+      <Project>{C96916DF-7A08-48C7-822B-7F6E28703B38}</Project>
+      <Name>Presenters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\ThirdParty.csproj">
+      <Project>{671A23B0-CA5D-4026-B761-3D4E461F9C17}</Project>
+      <Name>ThirdParty</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dotrl.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

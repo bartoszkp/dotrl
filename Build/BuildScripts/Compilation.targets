@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+  <PropertyGroup>
+    <CompilationTarget>Rebuild</CompilationTarget>
+    <CodeAnalysisOption>RunCodeAnalysis=true</CodeAnalysisOption>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>	
+  
+  <Target Name="Compilation">
+    <MSBuild 	
+       Projects="$(ProjectRootDirPath)\dotRL.sln"
+       Targets="$(CompilationTarget)"
+       Properties="Configuration=$(Configuration);Platform=$(Platform);DefineConstants=$(DefineConstants)">
+
+      <Output TaskParameter="TargetOutputs" ItemName="MSBuildCompilationOutput"/>
+    </MSBuild>
+  </Target>
+</Project>
