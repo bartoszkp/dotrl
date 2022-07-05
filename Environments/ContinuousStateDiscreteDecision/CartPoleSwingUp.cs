@@ -110,6 +110,7 @@ namespace Environments.ContinuousStateDiscreteDecision
             this.theta = Math.PI;
             this.dTheta = 0;
 
+            RectifyState();
             UpdateCurrentState();
         }
 
