@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace BackwardCompatibility
 {
+    [Serializable]
     public enum CellType
     {
         Linear, Expotential, Arcustangent
     }
 
     [System.Diagnostics.DebuggerDisplay("Can({Value})")]
+    [Serializable]
     public class Can
     {
         public double Value { get; set; }
     }
 
-    /// <summary>
-    /// Summary description CellSet
-    /// </summary>
     [Serializable]
     public class CellSet
     {
@@ -43,13 +43,11 @@ namespace BackwardCompatibility
 
             public CellType Type { get; set; }
 
-            private delegate double Delegate11(double x);
+            [NonSerialized]
+            private Func<double, double> function;
 
-            private Delegate11 function;
-
-            private delegate double Delegate12(double x, double y);
-
-            private Delegate12 derivative;
+            [NonSerialized]
+            private Func<double, double, double> derivative;
             #endregion
 
             #region Initialization
@@ -96,25 +94,9 @@ namespace BackwardCompatibility
                 Contract.Requires(input_dim >= 1, "Wrong dimension");
                 Contract.Requires(out_dim >= 1, "Wrong dimension");
                 Contract.Requires(typ == CellType.Linear || typ == CellType.Expotential || typ == CellType.Arcustangent);
-                switch (typ)
-                {
-                    case CellType.Linear:
-                        function = new Delegate11(FunctionLinear);
-                        derivative = new Delegate12(DerivativeLinear);
-                        break;
-                    case CellType.Expotential:
-                        function = new Delegate11(FunctionExpotential);
-                        derivative = new Delegate12(DerivativeExpotential);
-                        break;
-                    case CellType.Arcustangent:
-                        function = new Delegate11(FunctionArcustangent);
-                        derivative = new Delegate12(DerivativeArcustangent);
-                        break;
-                    default:
-                        return;
-                }
                 
                 Type = typ;
+                InitializeFunctions();
 
                 Input = new Can[input_dim];
                 Output = new Can();
@@ -129,6 +111,33 @@ namespace BackwardCompatibility
 
                 dL_dNextX = new Can[out_dim];
                 dNextX_dOutput = new Can[out_dim];
+            }
+
+            [OnDeserialized]
+            internal void OnDeserialized(StreamingContext context)
+            {
+                InitializeFunctions();
+            }
+
+            private void InitializeFunctions()
+            {
+                switch (Type)
+                {
+                    case CellType.Linear:
+                        function = FunctionLinear;
+                        derivative = DerivativeLinear;
+                        break;
+                    case CellType.Expotential:
+                        function = FunctionExpotential;
+                        derivative = DerivativeExpotential;
+                        break;
+                    case CellType.Arcustangent:
+                        function = FunctionArcustangent;
+                        derivative = DerivativeArcustangent;
+                        break;
+                    default:
+                        return;
+                }
             }
 
             public void AddInputDimension(int index)
@@ -205,14 +214,9 @@ namespace BackwardCompatibility
         }
 
         #region Components
-        protected ASampler TheSampler { get; set; }
-        #endregion
- 
-        #region Initialization
-        public CellSet()
-        {
-            TheSampler = new ASampler();
-        }
+        [NonSerialized]
+        private ASampler the_sampler = new ASampler();
+        protected ASampler TheSampler { get { return the_sampler; } }
         #endregion
     }
 }
